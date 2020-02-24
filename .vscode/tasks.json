@@ -14,6 +14,12 @@
             "type": "shell",
             "command": "scripts/copy-to-staging.sh",
             "problemMatcher": []
-        }
+        },
+        {
+            "label": "copy to production",
+            "type": "shell",
+            "command": "scripts/copy-to-production.sh",
+            "problemMatcher": []
+        },
     ]
 }

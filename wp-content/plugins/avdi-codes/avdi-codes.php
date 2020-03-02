@@ -33,11 +33,15 @@ function eddwp_maybe_start_session( $start_session ) {
 	if( empty( $_REQUEST['edd_action'] ) && false === strpos( $_SERVER['REQUEST_URI'], '/downloads' ) ) {
 		$start_session = false;
 	}
-
+	// if we're in checkout we should have a session
+	if ( false !== strpos( trailingslashit($_SERVER['REQUEST_URI']), '/checkout/') ) {
+		$start_session = true;
+	}
 	// Finally, if there is a discount in the GET parameters, we should always start a session, so it applies correctly.
 	if ( ! empty( $_GET['discount'] ) ) {
 		$start_session = true;
 	}
+	error_log("Start EDD session: " . $start_session);
 	return $start_session;
 }
 add_filter( 'edd_start_session', 'eddwp_maybe_start_session', 10, 1 );

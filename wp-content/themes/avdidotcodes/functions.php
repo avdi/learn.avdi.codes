@@ -12,3 +12,15 @@ function avdidotcodes_theme_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'avdidotcodes_theme_enqueue_styles' );
 ?>
+
+<?php
+function avdidotcode_add_front_live_chat_widget() {
+    ?>
+    <script src="https://chat-assets.frontapp.com/v1/chat.bundle.js"></script>
+    <script>
+      window.FrontChat('init', {chatId: 'fbbf8fc3f48a19c15ef3db9acaee0e83', useDefaultLauncher: true});
+    </script>
+    <?php
+}
+add_action('wp_footer', 'avdidotcode_add_front_live_chat_widget');
+?>

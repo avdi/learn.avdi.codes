@@ -41,7 +41,6 @@ function eddwp_maybe_start_session( $start_session ) {
 	if ( ! empty( $_GET['discount'] ) ) {
 		$start_session = true;
 	}
-	error_log("Start EDD session: " . $start_session);
 	return $start_session;
 }
 add_filter( 'edd_start_session', 'eddwp_maybe_start_session', 10, 1 );

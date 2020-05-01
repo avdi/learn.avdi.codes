@@ -41,9 +41,20 @@ function eddwp_maybe_start_session( $start_session ) {
 	if ( ! empty( $_GET['discount'] ) ) {
 		$start_session = true;
 	}
+	// If this is an AJAX POST from applying a discount code
+	if ( 'edd_apply_discount' == $_POST['action'] ) {
+		$start_session = true;
+	}
+	// error_log(print_r($_POST['code'], true));
+	// error_log(print_r($_POST['action'], true));
+	// error_log(print_r($_POST['form'], true));
+	// if($start_session) {
+	// 	error_log("*** EDD start session: YES");
+	// } else {
+	// 	error_log("*** EDD start session: NO");
+	// }
 	return $start_session;
 }
 add_filter( 'edd_start_session', 'eddwp_maybe_start_session', 10, 1 );
 
-/* Stop Adding Functions Below this Line */
-?>
+/* Stop Adding Functions Below this Line */	

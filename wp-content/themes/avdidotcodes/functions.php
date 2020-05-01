@@ -11,4 +11,3 @@ function avdidotcodes_theme_enqueue_styles() {
     );
 }
 add_action( 'wp_enqueue_scripts', 'avdidotcodes_theme_enqueue_styles' );
-?>

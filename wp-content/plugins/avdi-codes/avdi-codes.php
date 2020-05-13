@@ -57,4 +57,29 @@ function eddwp_maybe_start_session( $start_session ) {
 }
 add_filter( 'edd_start_session', 'eddwp_maybe_start_session', 10, 1 );
 
+/**
+ * Redirect user after successful login.
+ *
+ * @param string $redirect_to URL to redirect to.
+ * @param string $request URL the user is coming from.
+ * @param object $user Logged user's data.
+ * @return string
+ */
+function avdicodes_login_redirect( $redirect_to, $request, $user ) {
+    //is there a user to check?
+    if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+        //check for admins
+        if ( in_array( 'administrator', $user->roles ) ) {
+            // redirect them to the default place
+            return $redirect_to;
+        } else {
+            return get_bloginfo( 'url' ) . '/account-home/';
+        }
+    } else {
+        return $redirect_to;
+    }
+}
+ 
+add_filter( 'login_redirect', 'avdicodes_login_redirect', 10, 3 );
+
 /* Stop Adding Functions Below this Line */	

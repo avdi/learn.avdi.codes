@@ -1,4 +1,6 @@
-This is an overlay containing only the parts of avdi.codes that we want to keep under revision control.
+This is an overlay containing only the parts of learn.avdi.codes that we want to keep under revision control.
+
+Forked from https://github.com/avdi/avdi.codes
 
 E.g. site-specific plugin, child theme, maybe config.
 
